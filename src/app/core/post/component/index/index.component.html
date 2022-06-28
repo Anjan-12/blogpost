@@ -1,0 +1,59 @@
+
+  <div id="layout" class="pure-g">
+    <div class="content pure-u-1 pure-u-md-3-4">
+      <div>
+<!-- <label>
+  <select #langselect (change)="translate.use(langselect.value)" >
+<option *ngFor="let lang of translate.getLangs()" [value]="lang">
+  {{lang}}
+</option>
+  </select>
+</label> -->
+        <!-- A wrapper for all the blog posts -->
+        <div class="posts">
+          <h1 class="content-subhead">Blog Post</h1>
+            <!-- <span style="color:red">{{errorMessage}}</span> -->
+          <!-- A single blog post -->
+           <div class="input-group mb-3">
+          <input
+            (input)="onSearch($event)"
+            type="text"
+            class="form-control is-invalid"
+            id="searchBox"
+            placeholder="Search...."
+          />
+          <button class="input-group-text" type="submit">search
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+          <section class="post" *ngFor="let post of blogPosts" >
+
+            <header class="post-header">
+              <h2 class="post-title" [innerHtml]="post.title.rendered"></h2>
+              <p class="post-meta">
+                by <a href="#" >{{post.author}}</a> date
+                <a href="#">{{post.date |date:'short'}}</a>
+              </p>
+            </header>
+
+            <div class="post-description">
+              <p [innerHtml]="post.excerpt.rendered | slice:0:400"></p>
+              <a class="button button1" [routerLink]="['/post/view', post.id]" routerLinkActive="router-link-active">
+                Read More
+              </a>
+            </div>
+          </section>
+          <button type="button" [routerLink]="['/post/create']" routerLinkActive="router-link-active" class=" btn btn-primary">create+</button>
+        </div>
+        <br>
+
+      </div>
+        <div class="footer">
+          <div class="pure-menu pure-menu-horizontal">
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>

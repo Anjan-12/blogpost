@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  apiUrl: 'https://studiomatrix2.sg-host.com/wp-json/',
+  production: false,
 };
 
 /*
