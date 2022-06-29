@@ -1,18 +1,26 @@
 h1{
     color:blue
 }
+
 form {
     max-width: 900px;
-    margin: 35px auto;
+    margin: 100px auto;
+    overflow-y: auto;
 
 }
 h1{
-  background-color:beige;
+
   text-align: center;
   text-decoration: underline;
 }
 button{
-    margin:7px
+    margin:7px;
+    position: fixed;
+}
+
+  img{
+    max-width: 100%;
+    width:100%;
 }
 .modal {
     display: block; /* Hidden by default */
@@ -35,7 +43,3 @@ button{
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
   }
-  img{
-    max-width: 100%;
-    width:100%;
-}

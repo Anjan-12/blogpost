@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         TokenService.setAccessToken(this.token);
         console.log('bhayo');
 
-        this.router.navigateByUrl("hffix");
+        this.router.navigateByUrl('/post/index');
       },
       error: (res) => console.log('An error occurred: ', res),
     });

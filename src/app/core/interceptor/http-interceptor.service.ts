@@ -6,21 +6,25 @@ import {
   HttpInterceptor,
   HttpHeaders,
 } from '@angular/common/http';
-import { catchError, Observable } from 'rxjs';
+import { catchError, finalize, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/service/login.service';
 import { environment } from 'src/environments/environment';
 import { TokenService } from '../services/token.service';
+import { LoaderService } from '../services/loader.service';
 
 @Injectable()
 export class HttpInterceptorService implements HttpInterceptor {
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(private router: Router, private loaderService: LoaderService) {}
 
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    return next.handle(this.requestWithHeaders(request));
+    this.loaderService.showLoader();
+    return next
+      .handle(this.requestWithHeaders(request))
+      .pipe(finalize(() => this.loaderService.dismissLoader()));
   }
 
   private requestWithHeaders(req: HttpRequest<unknown>): HttpRequest<unknown> {

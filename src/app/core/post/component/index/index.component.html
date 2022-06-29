@@ -1,5 +1,6 @@
+<app-header></app-header>
 
-  <div id="layout" class="pure-g">
+  <div  class="flex-container" >
     <div class="content pure-u-1 pure-u-md-3-4">
       <div>
 <!-- <label>
@@ -11,7 +12,7 @@
 </label> -->
         <!-- A wrapper for all the blog posts -->
         <div class="posts">
-          <h1 class="content-subhead">Blog Post</h1>
+          <h1 class="content-subhead"  style="text-align:center; color:darkblue; "><strong>Blog Post</strong></h1>
             <!-- <span style="color:red">{{errorMessage}}</span> -->
           <!-- A single blog post -->
            <div class="input-group mb-3">
@@ -31,8 +32,8 @@
             <header class="post-header">
               <h2 class="post-title" [innerHtml]="post.title.rendered"></h2>
               <p class="post-meta">
-                by <a href="#" >{{post.author}}</a> date
-                <a href="#">{{post.date |date:'short'}}</a>
+                by <a  >{{post.author}}</a> date
+                <a>{{post.date |date:'short'}}</a>
               </p>
             </header>
 
@@ -57,3 +58,5 @@
         </div>
       </div>
     </div>
+
+<app-footer ></app-footer>

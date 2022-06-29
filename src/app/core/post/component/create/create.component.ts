@@ -105,8 +105,6 @@ export class CreateComponent implements OnInit {
         .savePost(this.form.value, this.id)
         .pipe(first())
         .subscribe((res) => {
-          console.log('now fine');
-
           this.router.navigateByUrl('/post/index');
         });
     }

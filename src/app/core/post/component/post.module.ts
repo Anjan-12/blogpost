@@ -6,6 +6,8 @@ import { ApiService } from "../../services/api.service";
 import { CreateComponent } from "./create/create.component";
 import { IndexComponent } from "./index/index.component";
 import { ViewComponent } from "./view/view.component";
+import { HeaderComponent } from "src/app/shared/components/header/header.component";
+import { FooterComponent } from "src/app/shared/components/footer/footer.component";
 
 
 

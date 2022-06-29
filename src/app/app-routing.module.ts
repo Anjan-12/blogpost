@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/component/login/login.component';
 import { HFfixComponent } from './hffix/hffix.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 
 const routes: Routes = [
@@ -18,14 +20,14 @@ const routes: Routes = [
   {
     path: 'post',
     loadChildren: () =>
-      import(
-        'src/app/core/post/component/post.module'
-      ).then((m) => m.PostModule),
+      import('src/app/core/post/component/post.module').then(
+        (m) => m.PostModule
+      ),
   },
   { path: 'hffix', component: HFfixComponent },
 
-
-
+  { path: 'footer', component: FooterComponent },
+  { path: 'header', component: HeaderComponent },
 ];
 
 @NgModule({
