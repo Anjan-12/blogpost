@@ -1,3 +1,4 @@
+
 h1{
     color:blue
 }
@@ -5,7 +6,6 @@ h1{
 form {
     max-width: 900px;
     margin: 100px auto;
-    overflow-y: auto;
 
 }
 h1{
@@ -15,7 +15,6 @@ h1{
 }
 button{
     margin:7px;
-    position: fixed;
 }
 
   img{
@@ -43,3 +42,20 @@ button{
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
   }
+  .flex-container {
+  display: flex;
+  min-height: 100vh;
+  position: relative;
+  flex: 1;
+
+}
+.error-message {
+  display: none;
+  color: red;
+}
+form.ng-submitted input.ng-invalid,form.ng-submitted textarea.ng-invalid{
+  border-color: red;
+}
+form.ng-submitted input.ng-invalid + .error-message ,form.ng-submitted textarea.ng-invalid + .error-message{
+  display: block;
+}

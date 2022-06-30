@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenService } from 'src/app/core/services/token.service';
 import { LoginService } from '../../service/login.service';
@@ -11,7 +11,7 @@ import { LoginService } from '../../service/login.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-
+  errorMessage: '' | undefined;
   token: string = '';
   constructor(
     private loginService: LoginService,
@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
     private formbuilder: FormBuilder
   ) {
     this.loginForm = this.formbuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required],
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
     });
   }
 
@@ -32,9 +32,11 @@ export class LoginComponent implements OnInit {
         TokenService.setAccessToken(this.token);
         console.log('bhayo');
 
-        this.router.navigateByUrl('/post/index');
+      //   this.router.navigateByUrl('/post/index');
       },
-      error: (res) => console.log('An error occurred: ', res),
+      error: (res) => this.errorMessage = res.error.message,
+
+
     });
   }
 }

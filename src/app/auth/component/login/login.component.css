@@ -10,3 +10,21 @@
   #login .login-form{
     padding:0px 25px;
   }
+
+  .error-message {
+  display: none;
+  color: red;
+
+}
+form.ng-submitted input.ng-invalid {
+  border-color: red;
+}
+form.ng-submitted input.ng-invalid + .error-message {
+  display: block;
+}
+
+
+div.input-prepend{
+  font-size:1rem;
+
+}

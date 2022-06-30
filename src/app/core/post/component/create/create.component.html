@@ -1,67 +1,59 @@
 <app-header></app-header>
 <div class="height">
-<div id="Create" class="container">
+  <div class="flex-container">
     <div class="new">
-    <h1 >{{postformlabel}}</h1>
-<div class="back">
-</div>
-    <form [formGroup]="form" (submit)="submit()">
-
+      <h1>{{ postformlabel }}</h1>
+      <div class="back"></div>
+      <form [formGroup]="form" (submit)="submit()">
         <div class="form-group">
-            <label for="title">Title</label>
-            <input
-                formControlName="title"
-                id="title"
-                type="text"
-                value="form.value.title"
-                class="form-control">
-
-
+          <label for="title">Title</label>
+          <input
+            formControlName="title"
+            id="title"
+            type="text"
+            value="form.value.title"
+            class="form-control"
+          />
+          <div class="error-message">**Title is required!!</div>
         </div>
 
         <div class="form-group">
-
-            <input
+          <input
             id="Image"
+            formControlName="featured_media"
             type="file"
             #fileUpload
             (change)="onFileUpload($event)"
-            class="form-control" hidden>
-            <button (click)="fileUpload.click()" type="button">upload</button>
-            <img [src]="imageUrl" >
+            class="form-control"
+            hidden
+          />
+          <button (click)="fileUpload.click()" type="button">upload</button>
+          <img [src]="imageUrl" />
+  <div class="error-message">Image is required</div>
+
         </div>
         <div class="form-group">
-
-            <label for="content">Content</label>
-            <textarea
-                formControlName="content"
-                id="content"
-                type="text"
-                value="form.value.content"
-                class="form-control">
-            </textarea>
-
+          <label for="content">Content</label>
+          <textarea
+            formControlName="content"
+            id="content"
+            type="text"
+            value="form.value.content"
+            class="form-control"
+          ></textarea>
+           <div class="error-message">**Content is required!!</div>
         </div>
 
-
-
-      <button class="btn btn-success" [disabled]='form.invalid' type="submit" >{{actionbtn}}</button>
-      <button class="btn btn-primary" (click)="Back()">Back</button>
-      <!-- <button class="btn btn-success" [disabled]='form.invalid' *ngIf="!btnvisibility" (click)="update()">Update</button> -->
-
-    </form>
-
-</div>
-
-
-</div>
-<div>
+        <button class="btn btn-success" type="submit">{{ actionbtn }}</button>
+        <button class="btn btn-primary" (click)="Back()">Back</button>
+        <!-- <button class="btn btn-success" [disabled]='form.invalid' *ngIf="!btnvisibility" (click)="update()">Update</button> -->
+      </form>
+    </div>
   </div>
+  <div></div>
   <app-footer></app-footer>
 </div>
 <div id="myModal" *ngIf="isImageProcessing" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content">
-      Image is uploading...
-    </div>
+  <!-- Modal content -->
+  <div class="modal-content">Image is uploading...</div>
+</div>

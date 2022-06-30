@@ -47,9 +47,13 @@ export class CreateComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
-      title: new FormControl('', [Validators.required]),
+      title: new FormControl('', [
+        Validators.required,
+        Validators.minLength(5),
+      ]),
       featured_media: new FormControl('', Validators.required),
       content: new FormControl('', Validators.required),
+
       status: 'publish',
     });
     this.imageSource = '';
@@ -105,6 +109,7 @@ export class CreateComponent implements OnInit {
         .savePost(this.form.value, this.id)
         .pipe(first())
         .subscribe((res) => {
+            this.isProcessing = false;
           this.router.navigateByUrl('/post/index');
         });
     }

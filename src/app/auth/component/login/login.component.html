@@ -16,6 +16,8 @@
                 type="text"
                 id="UserUsername"
               />
+            <div class="error-message">**username is required!!</div>
+
             </div>
           </div>
           <div class="control-group">
@@ -27,6 +29,7 @@
                 type="password"
                 id="Password"
               />
+              <div class="error-message">**password is required!!</div>
             </div>
           </div>
           <div class="control-group">
@@ -57,3 +60,4 @@
   <!--/.row-fluid-->
 </div>
 <!--/.container-->
+<div class="alert alert-danger" *ngIf="!!errorMessage" [innerHTML]="errorMessage"></div>
