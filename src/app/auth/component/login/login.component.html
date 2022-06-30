@@ -2,6 +2,12 @@
   href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"
   rel="stylesheet"
 />
+<div
+  class="alert alert-danger"
+  *ngIf="!!errorMessage && isValidFormSubmitted"
+  [innerHTML]="errorMessage"
+></div>
+
 <div id="login" class="container">
   <div class="row-fluid">
     <div class="span12">
@@ -14,10 +20,9 @@
                 formControlName="username"
                 placeholder="Username"
                 type="text"
-                id="UserUsername"
+                id="Username"
               />
-            <div class="error-message">**username is required!!</div>
-
+              <div class="error-message">**username is required!!</div>
             </div>
           </div>
           <div class="control-group">
@@ -60,4 +65,3 @@
   <!--/.row-fluid-->
 </div>
 <!--/.container-->
-<div class="alert alert-danger" *ngIf="!!errorMessage" [innerHTML]="errorMessage"></div>
