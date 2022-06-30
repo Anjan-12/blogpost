@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -15,9 +16,7 @@ import { LoginService } from '../../service/login.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  // unamepattern = '^[a-z0-9]{8-15}$';
-  // pwdPattern = '^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?!.*s).{6,12}$';
-
+  notAllowedNames = ['anjan'];
   loginForm: FormGroup;
   errorMessage: '' | undefined;
   token: string = '';
@@ -28,13 +27,18 @@ export class LoginComponent implements OnInit {
     private formbuilder: FormBuilder
   ) {
     this.loginForm = this.formbuilder.group({
-      username: new FormControl('', Validators.pattern(/[a-z]$/)),
+      username: new FormControl('', [
+        Validators.required,
+        this.NaNames.bind(this),
+      ]),
       password: new FormControl('', Validators.required),
     });
   }
 
   ngOnInit(): void {}
   save() {
+    console.log(this.loginForm);
+
     this.isValidFormSubmitted = false;
     if (this.loginForm.invalid) {
       return;
@@ -50,5 +54,11 @@ export class LoginComponent implements OnInit {
       },
       error: (res) => (this.errorMessage = res.error.message),
     });
+  }
+  NaNames(control: FormControl) {
+    if (this.notAllowedNames.indexOf(control.value) !== -1) {
+      return { nameIsNotAllowed: true };
+    }
+    return null;
   }
 }
